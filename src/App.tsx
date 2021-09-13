@@ -1,5 +1,10 @@
+import { GlobalStyle } from './styles/global';
+
 export function App(){
   return(
-    null
+    <>
+    <p>teste</p>
+    <GlobalStyle />
+    </>
   )
 }
