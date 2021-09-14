@@ -5,7 +5,7 @@ import entradasImg from "../../assets/svg/entradas.svg";
 import saidasImg from "../../assets/svg/saidas.svg";
 import fecharImg from "../../assets/svg/fechar.svg";
 
-import { Container } from "./styles";
+import { Container, TransactionsTypeContainer, RadioBox } from "./styles";
 
 Modal.setAppElement("#root");
 
@@ -22,6 +22,7 @@ export function NewTransactionModal({
   const [name, setName] = useState("");
   const [price, setPrice] = useState("");
   const [category, setCategory] = useState("");
+  const [type, setType] = useState("deposit");
 
   return (
     <Modal
@@ -54,15 +55,27 @@ export function NewTransactionModal({
           onChange={(e) => setPrice(e.target.value)}
         />
 
-        <button type="button">
-          <img src={entradasImg} alt="Entrada" />
-          <p>Entrada</p>
-        </button>
+        <TransactionsTypeContainer>
+          <RadioBox 
+            type="button"
+            onClick={() => { setType('deposit') }}
+            isActive={type === 'deposit'}
+            activeColor="green"
+          >
+            <img src={entradasImg} alt="Entrada" />
+            <span>Entrada</span>
+          </RadioBox>
 
-        <button type="button">
-          <img src={saidasImg} alt="Saída" />
-          <p>Saída</p>
-        </button>
+          <RadioBox 
+            type="button"
+            onClick={() => { setType('withdraw') }}
+            isActive={type === 'withdraw'}
+            activeColor="red"
+          >
+            <img src={saidasImg} alt="Saída" />
+            <span>Saída</span>
+          </RadioBox>
+        </TransactionsTypeContainer>
 
         <input
           placeholder="Categoria"
