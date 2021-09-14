@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
     --text-body: #969cb3;
 
     --input-background: #e7e9ee;
-    --input-border: #d7d7d7;
+    --border: #d7d7d7;
 
     --shape: #FFFFFF
   }
