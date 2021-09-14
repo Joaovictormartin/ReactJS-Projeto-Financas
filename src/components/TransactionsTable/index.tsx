@@ -1,6 +1,23 @@
+import { useEffect, useState } from 'react';
+
+import { Api } from '../../services/api';
 import { Container } from './styles';
 
 export function TransactionsTable() {
+  
+  const [table, setTable] = useState({});
+
+  useEffect(() => {
+
+    Api.get('/transactions')
+    .then(response => setTable(response.data))
+    .catch(error => {
+      console.error(error);
+      setTable({});
+    });
+
+  }, []);
+  
   return(
     <Container>
       <table>
